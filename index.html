@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+</body>
+</html>
+<html lang="id">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RapZMODZ - ALLPRODUK RapZMODZ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --dark: #121212;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(18, 18, 38, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg, 
+                rgba(255,255,255,0) 0%, 
+                rgba(255,255,255,0.1) 50%, 
+                rgba(255,255,255,0) 100%
+            );
+            transform: translateX(-100%);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            100% { transform: translateX(100%); }
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            margin: 20px 0;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-title i {
+            color: var(--primary);
+        }
+        
+        .benefits {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .benefits li {
+            margin-bottom: 10px;
+            list-style-type: none;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .benefits li::before {
+            content: '✓';
+            color: var(--success);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--warning);
+            margin-top: 15px;
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+        
+        .contact-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .testimonial-link {
+            display: block;
+            margin-top: 20px;
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .testimonial-link:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+             .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .services {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+               <img src="https://img1.pixhost.to/images/6394/609700012_skyzopedia.jpg" />
+  </p>
+  <body>
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="https://files.catbox.moe/bpk6hq.mp4" type="video/mp4">
+        </video>
+    </div>
+            <h1>𝓘𝐯𝐲 𝓢𝐭𝐨𝐫𝐞</h1>
+            <p>Produk 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫𝐞</p>
+        </div>
+        
+        <div class="content">
+            <div class="services">
+                <!-- Jasa By 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫𝐞 -->
+                <div class="service-card">
+                    <h2 class="service-title"><i class="fas fa-rocket"></i>Jasa By 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫𝐞</h2>
+                    <div class="divider"></div>
+                    <ul class="benefits">
+                        <li>Paid Edit</li>
+                        <li>Jasa TopUp All Game</li>
+                        <li>Jasa Joki MLBB</li>
+                        <li>RoomTour</li>
+                        <li>Create Akun</li>
+                        <li>DLL</li>
+                    </ul>
+                    <div class="divider"></div>
+                    <div class="price">Harga Mulai Dari 10K</div>
+                </div>
+                
+                <!-- Apk Premium 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫 -->
+                <div class="service-card">
+                    <h2 class="service-title"><i class="fas fa-bug"></i>Apk Premium 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫</h2>
+                    <div class="divider"></div>
+                    <ul class="benefits">
+                        <li>Alight Motion</li>
+                        <li>Amazon</li>
+                        <li>Bstation</li>
+                        <li>Canva</li>
+                        <li>Capcut</li>
+                        <li>Chat GPT</li>
+                        <li>Ibis Paint</li>
+                        <li>Spotfy</li>
+                        <li>Viu</li>
+                        <li>Youtube</li>
+                        <li>Youtube music</li>
+                        <li>Vidio Platinum</li>
+                        <li>Remini</li>
+                        <li>Piscart</li>
+                        <li>Loklok</li>
+                        <li>Prime Vidio</li>
+                        <li>wattpad</li>
+                        <li>Vsco</li>
+                        <li>Disney</li>
+                        <li>Iqiyi</li>
+                    </ul>
+                    <div class="divider"></div>
+                    <div class="price">Harga Mulai dari 20K</div>
+                </div>
+                
+                <!-- KebSos 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫𝐞 -->
+                <div class="service-card">
+                    <h2 class="service-title"><i class="fas fa-server"></i> KebSos 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫𝐞 </h2>
+                    <div class="divider"></div>
+                    <ul class="benefits">
+                        <li>ᯓᡣ𐭩 Tiktok
+                        
+                        ᯓᡣ𐭩 Follower (no refill)
+                         = 5.000-30.000
+                        ᯓᡣ𐭩 Like = 1.000-8.000
+                        ᯓᡣ𐭩 View = 3.00-10.000</li>
+                        <li>ᯓᡣ𐭩 Instagram
+                        ᯓᡣ𐭩 Follower (no refund)
+                         = 5.000-30.000</li>
+                        <li>ᯓᡣ𐭩 Youtube
+                        ᯓᡣ𐭩 View (no refund)
+                        = 5.000-50.000
+                        ᯓᡣ𐭩 Like = 8.000-35.000
+                        ᯓᡣ𐭩 Subs (refill 60d) 
+                        = 15.000-65.000 
+                        </li>
+                        <li>ᯓᡣ𐭩 Telegram
+                        ᯓᡣ𐭩 Member (no drop)
+                        = 6.000-25.000</li>
+                        <li>ᯓᡣ𐭩 Whatsapp
+                        ᯓᡣ𐭩 Member (no refund) 
+                        = 6.000-30.000</li>
+                    </ul>
+                    <div class="divider"></div>
+                    <div class="price">Harga nya murcee yaa gess ᯓᡣ𐭩</div>
+                </div>
+                
+                <!-- Jasa Buat SC CVPS + INSTALPANEL -->
+                <div class="service-card">
+                    <h2 class="service-title"><i class="fas fa-cloud"></i> Join Reseller 50.000</h2>
+                    <div class="divider"></div>
+                    <ul class="benefits">
+                              <h2>KEUNTUNGAN?Tanya aja ke Livy</h2>
+                <a href="https://wa.me/6281380818860" class="contact-btn">
+                    
+                    <i class=""></i> Join
+                            </a>       </ul>
+                    <div class="divider"></div>
+                    <div class="price">Harga 50.000</div>
+     
+                </div>
+
+                </div>
+            <div class="contact-section">
+                <h2>MINAT?</h2>
+                <a href="https://wa.me/6281380818860" class="contact-btn">
+                    <i class="fab fa-whatsapp"></i> HUBUNGI 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫
+                </a>
+         
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫</p>
+        </div>
+    </div>
+</body>
+</html>
