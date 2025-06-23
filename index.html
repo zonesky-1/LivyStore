@@ -1,302 +1,337 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>𝓘𝐯𝐲 𝓢𝐭𝐨𝐫𝐞 - AllProduk 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫𝐞</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <title>Cyru Store - Digital Solutions</title>
   <style>
     :root {
-      --primary: #6a11cb;
-      --secondary: #2575fc;
-      --dark: #121212;
-      --light: #f8f9fa;
-      --success: #28a745;
-      --warning: #ffc107;
-      --danger: #dc3545;
+      --primary: #7f5af0;
+      --secondary: #2cb67d;
+      --accent: #ff8906;
+      --bg-dark: #0f0e17;
+      --text-light: #fffffe;
+      --text-muted: #a7a9be;
+      --bg-light: #f0f0f0;
+      --text-dark: #0f0e17;
+      --white: #fff;
     }
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
     }
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
     body {
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      color: var(--light);
-      min-height: 100vh;
-      padding: 20px;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
       overflow-x: hidden;
+      transition: background 0.4s, color 0.4s;
+      opacity: 0;
+      animation: fadeInBody 1.2s ease-in forwards;
+      padding: 2rem;
     }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: rgba(18, 18, 38, 0.8);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 25px;
-      overflow: hidden;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    @keyframes fadeInBody {
+      to { opacity: 1; }
     }
-    .header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      padding: 40px 30px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
     }
-    .header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
-      transform: translateX(-100%);
-      animation: shine 3s infinite;
-    }
-    @keyframes shine {
-      100% { transform: translateX(100%); }
-    }
-    .header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-    }
-    .header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      position: relative;
-    }
-    .divider {
-      height: 3px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      margin: 20px 0;
-    }
-    .content {
-      padding: 40px;
-    }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-bottom: 40px;
-    }
-    .service-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 25px;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-    .service-title {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      color: var(--secondary);
+    #loader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #0f0e17;
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      z-index: 9999;
+      flex-direction: column;
     }
-    .service-title i {
-      color: var(--primary);
+    .spinner {
+      border: 6px solid #222;
+      border-top: 6px solid var(--primary);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
     }
-    .benefits {
-      margin: 15px 0;
-      padding-left: 20px;
-    }
-    .benefits li {
-      margin-bottom: 10px;
-      list-style-type: none;
-      position: relative;
-      padding-left: 25px;
-    }
-    .benefits li::before {
-      content: '✓';
-      color: var(--success);
-      position: absolute;
-      left: 0;
-      font-weight: bold;
-    }
-    .price {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: var(--warning);
-      margin-top: 15px;
-      text-align: center;
-      padding: 10px;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 8px;
-    }
-    .contact-section {
-      text-align: center;
-      margin-top: 40px;
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 15px;
-    }
-    .contact-btn {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 15px 30px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.2rem;
-      margin-top: 20px;
-      transition: all 0.3s;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-    .contact-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    }
-    .footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.5);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .video-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+    .progress-bar {
+      width: 80%;
+      height: 6px;
+      background: #222;
+      border-radius: 4px;
       overflow: hidden;
+      margin-top: 20px;
     }
-    .video-background video {
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      opacity: 0.3;
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      animation: progressGrow 2s ease-out forwards;
     }
-    @media (max-width: 768px) {
-      .header h1 { font-size: 2rem; }
-      .header p { font-size: 1rem; }
-      .content { padding: 20px; }
-      .services { grid-template-columns: 1fr; }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes progressGrow {
+      to { width: 100%; }
+    }
+    .toggle-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header img {
+      width: 80px;
+      height: auto;
+    }
+    header h1 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin: 0.5rem 0;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+    main {
+      max-width: 600px;
+      margin: auto;
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: var(--text-dark);
+    }
+    h2 {
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      font-weight: bold;
+    }
+    select, input[type="number"], input[type="text"] {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button[type="submit"] {
+      margin-top: 1.5rem;
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 0.8rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    button[type="submit"]:hover {
+      background-color: var(--secondary);
+    }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <img src="https://img1.pixhost.to/images/6394/609700012_skyzopedia.jpg" />
-      <h1>𝓘𝐯𝐲 𝓢𝐭𝐨𝐫𝐞</h1>
-      <p>Produk 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫𝐞</p>
-    </div>
-
-    <div class="video-background">
-      <video autoplay muted loop>
-        <source src="https://files.catbox.moe/bpk6hq.mp4" type="video/mp4" />
-      </video>
-    </div>
-
-    <div class="content">
-      <div class="services">
-        <!-- Produk & Jasa -->
-        <div class="service-card">
-          <h2 class="service-title"><i class="fas fa-rocket"></i>Jasa By 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫𝐞</h2>
-          <div class="divider"></div>
-          <ul class="benefits">
-            <li>Paid Edit</li>
-            <li>Jasa TopUp All Game</li>
-            <li>Jasa Joki MLBB</li>
-            <li>RoomTour</li>
-            <li>Create Akun</li>
-            <li>DLL</li>
-          </ul>
-          <div class="divider"></div>
-          <div class="price">Harga Mulai Dari 10K</div>
-        </div>
-
-        <div class="service-card">
-          <h2 class="service-title"><i class="fas fa-bug"></i>Apk Premium 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫</h2>
-          <div class="divider"></div>
-          <ul class="benefits">
-            <li>Alight Motion</li>
-            <li>Amazon</li>
-            <li>Bstation</li>
-            <li>Canva</li>
-            <li>Capcut</li>
-            <li>Chat GPT</li>
-            <li>Ibis Paint</li>
-            <li>Spotfy</li>
-            <li>Viu</li>
-            <li>Youtube</li>
-            <li>Youtube music</li>
-            <li>Vidio Platinum</li>
-            <li>Remini</li>
-            <li>Piscart</li>
-            <li>Loklok</li>
-            <li>Prime Vidio</li>
-            <li>Wattpad</li>
-            <li>Vsco</li>
-            <li>Disney</li>
-            <li>Iqiyi</li>
-          </ul>
-          <div class="divider"></div>
-          <div class="price">Harga Mulai dari 20K</div>
-        </div>
-
-        <div class="service-card">
-          <h2 class="service-title"><i class="fas fa-server"></i> KebSos 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫𝐞 </h2>
-          <div class="divider"></div>
-          <ul class="benefits">
-            <li>ᯓᡣ𐭩 Tiktok<br/>Follower = 5.000-30.000<br/>Like = 1.000-8.000<br/>View = 3.000-10.000</li>
-            <li>ᯓᡣ𐭩 Instagram<br/>Follower = 5.000-30.000</li>
-            <li>ᯓᡣ𐭩 Youtube<br/>View = 5.000-50.000<br/>Like = 8.000-35.000<br/>Subs = 15.000-65.000</li>
-            <li>ᯓᡣ𐭩 Telegram<br/>Member = 6.000-25.000</li>
-            <li>ᯓᡣ𐭩 Whatsapp<br/>Member = 6.000-30.000</li>
-          </ul>
-          <div class="divider"></div>
-          <div class="price">Harga nya murcee yaa gess ᯓᡣ𐭩</div>
-        </div>
-
-        <div class="service-card">
-          <h2 class="service-title"><i class="fas fa-cloud"></i> Join Reseller 50.000</h2>
-          <div class="divider"></div>
-          <ul class="benefits">
-            <h2>KEUNTUNGAN? Tanya aja ke Livy</h2>
-            <a href="https://wa.me/6281380818860" class="contact-btn">Join</a>
-          </ul>
-          <div class="divider"></div>
-          <div class="price">Harga 50.000</div>
-        </div>
-      </div>
-
-      <!-- Spotify Embed -->
-      <div style="margin: 40px 0; text-align: center;">
-        <iframe style="border-radius:12px"
-          src="https://open.spotify.com/embed/playlist/1lpnnwv9YUqt7WrZhIrXMr?utm_source=generator&theme=0"
-          width="100%" height="352" frameBorder="0" allowfullscreen=""
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"></iframe>
-      </div>
-
-      <!-- Kontak -->
-      <div class="contact-section">
-        <h2>MINAT?</h2>
-        <a href="https://wa.me/6281380818860" class="contact-btn">
-          <i class="fab fa-whatsapp"></i> HUBUNGI 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫
-        </a>
-      </div>
-    </div>
-
-    <div class="footer">
-      <p>&copy; 2025 𝓘𝐯𝐲 𝓢𝐭𝐨𝐫</p>
-    </div>
+  <div id="loader">
+    <div class="spinner"></div>
+    <div class="progress-bar"><span></span></div>
   </div>
-</body>
+  <button class="toggle-btn" onclick="toggleMode()">🌓 Mode</button>
+  <canvas id="particles"></canvas>  <header>
+    <img src="https://files.catbox.moe/5xvmae.jpg" alt="Logo Cyru Store" />
+    <h1>Cyru Store Hosting</h1>
+    <p>SOLUSI TERBAIK UNTUK KEBUTUHAN DIGITAL ANDA</p>
+  </header>  <main>
+    <section id="order-form">
+      <h2>Buat Pesanan</h2>
+      <form id="form-pesanan">
+        <label for="category">Pilih Kategori:</label>
+        <select id="category" name="category" required>
+          <option value="" disabled selected>Pilih...</option>
+          <option value="Panel-Privat">PANEL PTERODACTYL PRIVAT</option>
+          <option value="Panel-Public">PANEL PTERODACTYL PUBLIC</option>
+          <option value="Jasa Bug Whatsapp">JASA BUG WHATSAPP</option>
+          <option value="Sewa Bot Bug Whatsapp">SEWA BOT BUG WHATSAPP</option>
+          <option value="Jasa Buat Web">Web Store/Payment/Portofolio</option>
+          <option value="Script bug Whatsapp">Ambacrash/Dreadnought/Hunter Infinity/KoteiX Emperor</option>
+        </select>
+        <label for="service">Layanan:</label>
+        <select id="service" name="service" required>
+          <option value="" disabled selected>Pilih...</option>
+        </select>
+        <label for="quantity">Jumlah:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required />
+        <label for="price">Biaya:</label>
+        <input type="text" id="price" name="price" readonly />
+        <button type="submit">Beli Sekarang via WhatsApp</button>
+      </form>
+    </section><section style="margin-top: 2rem; text-align: center;">
+  <h2 style="color: var(--secondary); margin-bottom: 1rem;">🎵 Playlist Rekomendasi Cyru Store</h2>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6JCKDYVWa4EMdZPfGhHDjJ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</section>
+
+<footer>© 2025 CYRU STORE - ALL RIGHTS RESERVED</footer>
+
+  </main><audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_c119c50e87.mp3"></audio>
+
+  <script>
+    const layananData = {
+      "Panel-Privat": [
+        { name: "Privat Small", price: 5000 },
+        { name: "Privat Medium", price: 10000 }
+      ],
+      "Panel-Public": [
+        { name: "Panel Public", price: 5000 },
+        { name: "Public Fresh", price: 10000 }
+      ],
+      "Jasa Bug Whatsapp": [
+        { name: "Jasa Bug Whatsapp", price: 1500 }
+      ],
+      "Sewa Bot Bug Whatsapp": [
+        { name: "Sewa Bot Bug WA (7 Hari)", price: 5000 },
+        { name: "Sewa Bot Bug WA (1 Bulan)", price: 20000 }
+      ],
+      "Jasa Buat Web": [
+        { name: "Jasa Buat Web (Store)", price: 10000 },
+        { name: "Jasa Buat Web (Payment)", price: 5000 },
+        { name: "Jasa Buat Web (Portofolio)", price: 25000 }
+      ],
+      "Script bug Whatsapp": [
+        { name: "Ambacrash Enc", price: 10000 },
+        { name: "Ambacrash No Enc", price: 20000 },
+        { name: "Dreadnought Enc No Up", price: 15000 },
+        { name: "Dreadnought Enc Free Up", price: 20000 },
+        { name: "HUNTER INFINITY No Up", price: 5000 },
+        { name: "HUNTER INFINITY Free Up", price: 10000 },
+        { name: "KoteiX Emperor Enc No Up", price: 30000 }
+      ]
+    };
+
+    const categorySelect = document.getElementById('category');
+    const serviceSelect = document.getElementById('service');
+    const quantityInput = document.getElementById('quantity');
+    const priceInput = document.getElementById('price');
+    let hargaPerUnit = 0;
+
+    categorySelect.addEventListener('change', function () {
+      const selectedCategory = categorySelect.value;
+      const layanan = layananData[selectedCategory] || [];
+      serviceSelect.innerHTML = '<option value="" disabled selected>Pilih...</option>';
+      layanan.forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item.name;
+        opt.textContent = `${item.name} - Rp${item.price.toLocaleString()}`;
+        opt.dataset.price = item.price;
+        serviceSelect.appendChild(opt);
+      });
+      hargaPerUnit = 0;
+      priceInput.value = '';
+    });
+
+    serviceSelect.addEventListener('change', function () {
+      const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+      hargaPerUnit = parseInt(selectedOption.dataset.price || '0');
+      updatePrice();
+    });
+
+    quantityInput.addEventListener('input', updatePrice);
+
+    function updatePrice() {
+      const jumlah = parseInt(quantityInput.value || '0');
+      const total = hargaPerUnit * jumlah;
+      priceInput.value = isNaN(total) ? '' : 'Rp ' + total.toLocaleString();
+    }
+
+    document.getElementById('form-pesanan').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const kategori = categorySelect.value;
+      const layanan = serviceSelect.value;
+      const jumlah = quantityInput.value;
+      const total = priceInput.value;
+      const pesan = `Halo Cyru Store 👋%0ASaya ingin membeli:%0A- Kategori: ${kategori}%0A- Layanan: ${layanan}%0A- Jumlah: ${jumlah}%0A- Total: ${total}%0AMohon dibantu ya 🙏`;
+      const nomorWhatsApp = "6283896918923";
+      const urlWA = `https://wa.me/${nomorWhatsApp}?text=${pesan}`;
+      window.open(urlWA, '_blank');
+    });
+
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+    }
+
+    const hour = new Date().getHours();
+    if (hour >= 18 || hour < 6) {
+      document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+    }
+
+    document.querySelectorAll('button, a').forEach(el => {
+      el.addEventListener('click', () => {
+        document.getElementById('clickSound').play();
+      });
+    });
+
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    canvas.style.position = "fixed";
+    canvas.style.top = 0;
+    canvas.style.left = 0;
+    canvas.style.zIndex = "-1";
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = Array.from({ length: 80 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: 2 + Math.random() * 3,
+      dx: (Math.random() - 0.5) * 1.5,
+      dy: (Math.random() - 0.5) * 1.5,
+    }));
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = '#7f5af0aa';
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      }
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+
+    window.addEventListener('load', () => {
+      document.getElementById('loader').style.display = 'none';
+    });
+  </script></body>
 </html>
